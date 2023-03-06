@@ -1,0 +1,7 @@
+.tear {
+
+  stroke: gray;
+  stroke-width: 1px;
+
+  transform-origin: top center;
+}

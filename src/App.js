@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
+import Header from "./components/Header";
+import WateringLogs from "./components/watering/WateringLogs";
+import Plants from "./components/plants/Plants";
+import PlantAddForm from "./components/plants/PlantAddForm";
+import WateringForm from "./components/watering/WateringForm";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./CustomTheme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <div>
+          <Header>
+            <main style={{ marginTop: 64, flex: 1, height: "100vh" }}>
+              <Routes>
+                <Route path="/" />
+                <Route path="/plants" element={<Plants />} />
+                <Route path="/addPlant" element={<PlantAddForm />} />
+                <Route path="/addWatering" element={<WateringForm />} />
+                <Route path="/wateringLogs" element={<WateringLogs />} />
+              </Routes>
+            </main>
+          </Header>
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
